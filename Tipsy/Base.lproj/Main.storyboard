@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calculator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T0M-56-42h">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,9 +201,11 @@
                     <connections>
                         <outlet property="billTextField" destination="wcN-ka-Q4F" id="nmN-1V-IAC"/>
                         <outlet property="splitNumLabel" destination="bSy-Yc-886" id="JeV-nk-tZl"/>
+                        <outlet property="stepprer" destination="haq-5m-pqs" id="KS9-y0-XBn"/>
                         <outlet property="tenPctButton" destination="7y6-Kf-yF0" id="0zF-Wk-zh1"/>
                         <outlet property="twentyPctButton" destination="UtR-dU-EKt" id="N6x-sL-Oo4"/>
                         <outlet property="zeroPctButton" destination="XzR-0E-Xf7" id="m3J-DP-whG"/>
+                        <segue destination="Dnf-m2-FPm" kind="presentation" identifier="goToResult" id="BA3-x1-mhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,7 +217,7 @@
             <objects>
                 <viewController id="Dnf-m2-FPm" customClass="ResultViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DNW-gk-FsX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-Te-efL">
@@ -252,7 +254,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzn-9K-6hu">
-                                <rect key="frame" x="96.666666666666686" y="764" width="200" height="54"/>
+                                <rect key="frame" x="96.666666666666686" y="768" width="200" height="54"/>
                                 <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="0Lh-eY-3GO"/>
@@ -284,7 +286,7 @@
                         <constraints>
                             <constraint firstItem="ZCe-Te-efL" firstAttribute="leading" secondItem="DNW-gk-FsX" secondAttribute="leading" id="6ru-YS-pbr"/>
                             <constraint firstItem="Jmu-aI-Opa" firstAttribute="trailing" secondItem="HGt-bn-sCv" secondAttribute="trailing" constant="50" id="7aP-Th-SwT"/>
-                            <constraint firstItem="zzn-9K-6hu" firstAttribute="bottom" secondItem="Jmu-aI-Opa" secondAttribute="bottom" id="JIs-lH-Luz"/>
+                            <constraint firstItem="zzn-9K-6hu" firstAttribute="bottom" secondItem="Jmu-aI-Opa" secondAttribute="bottom" constant="-20" id="JIs-lH-Luz"/>
                             <constraint firstItem="HGt-bn-sCv" firstAttribute="top" secondItem="ZCe-Te-efL" secondAttribute="bottom" constant="5" id="MVS-zD-0ht"/>
                             <constraint firstItem="zzn-9K-6hu" firstAttribute="centerX" secondItem="DNW-gk-FsX" secondAttribute="centerX" id="McZ-hS-v8p"/>
                             <constraint firstItem="HGt-bn-sCv" firstAttribute="leading" secondItem="Jmu-aI-Opa" secondAttribute="leading" constant="50" id="XiE-5g-kT8"/>

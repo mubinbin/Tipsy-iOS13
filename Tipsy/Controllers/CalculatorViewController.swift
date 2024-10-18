@@ -17,6 +17,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var splitNumLabel: UILabel!
     @IBOutlet weak var stepprer: UIStepper!
     
+    var res: Result?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,25 +47,30 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         var tip: Float = 0.0
+        res = Result()
+        res?.tip = "0%"
         var numOfPeople: Float = 2.0
         var billTotal: Float = 0.0
         
         if let text = splitNumLabel.text {
             numOfPeople = Float(text) ?? 2.0
+            res?.people = text
         }
         if tenPctButton.isSelected {
             tip = 0.1
+            res?.tip = "10%"
         } else if twentyPctButton.isSelected {
             tip = 0.2
+            res?.tip = "20%"
         }
         
         if let billTotalText = billTextField.text {
             billTotal = Float(billTotalText) ?? 0.0
         }
         
-        let res = billTotal * (1.0 + tip) / numOfPeople
+        res?.amount = billTotal * (1.0 + tip) / numOfPeople
         
-        print(res)
+        self.performSegue(withIdentifier: "goToResult", sender: self)
     }
     
     private func updateUI(tipButton: UIButton? = nil) {
@@ -84,6 +91,13 @@ class CalculatorViewController: UIViewController {
             zeroPctButton.isSelected = false
             tenPctButton.isSelected = false
             twentyPctButton.isSelected = false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult" {
+            let destinationVC: ResultViewController = segue.destination as! ResultViewController
+            destinationVC.res = res
         }
     }
 }
